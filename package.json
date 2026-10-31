@@ -46,8 +46,7 @@
     "author": "Arijit Gupta",
     "license": "MIT",
     "dependencies": {
-        "@arijitgupta/geo-core": "^1.1.0",
-        "@arijitgupta/geo-distance": "^2.1.0"
+        "@arijitgupta/geo-distance": "^1.1.0"
     },
     "devDependencies": {
         "@vitest/coverage-v8": "^4.1.11",
