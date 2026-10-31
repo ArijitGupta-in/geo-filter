@@ -1,7 +1,7 @@
 {
     "name": "@arijitgupta/geo-filter",
-    "version": "0.2.0",
-    "description": "Filter GPS tracks using accuracy, speed outlier, and minimum-distance criteria.",
+    "version": "1.0.0",
+    "description": "Filter GPS tracks by reported accuracy, implied speed, and minimum distance.",
     "type": "module",
     "repository": {
         "type": "git",
@@ -27,12 +27,14 @@
     },
     "sideEffects": false,
     "scripts": {
-        "build": "tsc",
+        "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+        "build": "npm run clean && tsc",
         "test": "vitest run",
         "test:coverage": "vitest run --coverage",
         "check": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
         "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
-        "prepublishOnly": "npm run check && npm test && npm run build"
+        "benchmark": "npm run build && node benchmarks/filter-track.mjs",
+        "prepublishOnly": "npm run check && npm run test:coverage && npm run build"
     },
     "keywords": [
         "geo",
@@ -41,10 +43,21 @@
         "filter",
         "track",
         "noise",
-        "outlier"
+        "outlier",
+        "gps",
+        "accuracy",
+        "speed",
+        "thinning",
+        "DMS",
+        "latitude",
+        "longitude"
     ],
     "author": "Arijit Gupta",
     "license": "MIT",
+    "dependencies": {
+        "@arijitgupta/geo-core": "^1.1.0",
+        "@arijitgupta/geo-distance": "^2.1.0"
+    },
     "devDependencies": {
         "@vitest/coverage-v8": "^4.1.11",
         "markdownlint-cli2": "^0.23.2",

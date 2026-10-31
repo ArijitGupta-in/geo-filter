@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import * as packageEntry from "./index.js";
 
 describe("package entry point", () => {
-    it("loads successfully", () => {
-        expect(packageEntry).toBeDefined();
+    it("exports the public runtime operations", () => {
+        expect(packageEntry.filterTrack).toBeTypeOf("function");
+        expect(packageEntry.removeStationaryDuplicates).toBeTypeOf("function");
     });
 });

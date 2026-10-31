@@ -1,2 +1,14 @@
-export type {Coordinate,LatitudeDMS,LongitudeDMS,DMSCoordinate,CoordinateInput,TrackPoint,FilterTrackOptions,NormalizedTrackPoint,FilterTrackResult} from "./types.js";
-export {filterTrack,removeStationaryDuplicates} from "./filterTrack.js";
+export type {
+    Coordinate,
+    CoordinateInput,
+    DMSCoordinate,
+    FilterTrackOptions,
+    FilterTrackResult,
+    LatitudeDMS,
+    LatitudeDirection,
+    LongitudeDMS,
+    LongitudeDirection,
+    NormalizedTrackPoint,
+    TrackPoint,
+} from "./types.js";
+export { filterTrack, removeStationaryDuplicates } from "./filterTrack.js";

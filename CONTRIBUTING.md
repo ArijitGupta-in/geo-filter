@@ -10,7 +10,7 @@
 ```bash
 git clone https://github.com/ArijitGupta-in/geo-filter.git
 cd geo-filter
-npm install
+npm ci
 ```
 
 ## Development commands
@@ -18,26 +18,30 @@ npm install
 | Command | Purpose |
 | --- | --- |
 | `npm test` | Run tests with Vitest |
-| `npm run test:coverage` | Run tests and enforce coverage thresholds |
+| `npm run test:coverage` | Run tests and generate a coverage report |
 | `npm run check` | Type-check source and tests |
 | `npm run lint:md` | Lint Markdown files |
-| `npm run build` | Compile TypeScript to `dist/` |
+| `npm run clean` | Remove generated `dist/` output |
+| `npm run build` | Clean and compile TypeScript to `dist/` |
+| `npm run benchmark` | Build and run the track filtering benchmark |
 
 ## Project conventions
 
 - Source files live under `src/`; tests sit alongside their subjects.
 - The public API is defined only by exports from `src/index.ts`.
 - Use strict TypeScript and `import type` for type-only imports.
-- Use `@arijitgupta/geo-core` for shared coordinate types and validation.
+- Use `@arijitgupta/geo-core` for shared coordinate types and normalization through `src/geo.ts`; do not duplicate those contracts.
+- Use `@arijitgupta/geo-distance` for great-circle distance calculations rather than maintaining a second implementation.
 - Validate untrusted inputs at public API boundaries.
 - Make each filter's required inputs explicit. Timestamp-, accuracy-, and speed-dependent operations must not silently assume those values exist.
 - Document thresholds, units, ordering guarantees, and whether rejected samples are discarded or reported.
 - Every public function needs happy-path, boundary, and invalid-input tests.
+- Add TSDoc for each exported function and update the README and changelog when public behavior or API changes.
 - Avoid `as any` in tests unless deliberately testing unsafe input.
 
 ## Design before implementation
 
-The API and filtering strategies are not finalized. Discuss the distinction between invalid samples, noisy samples, and valid but unusual movement. Consider missing timestamps, irregular sampling intervals, reported accuracy, stationary drift, and legitimate high-speed travel before choosing defaults.
+Discuss the distinction between invalid samples, noisy samples, and valid but unusual movement before adding filters or changing defaults. Preserve explicit semantics for missing timestamps, irregular sampling intervals, reported accuracy, stationary drift, and legitimate high-speed travel.
 
 Keep this package focused on filtering GPS observations; geometric path simplification belongs in `geo-simplify`.
 
