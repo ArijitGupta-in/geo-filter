@@ -1,10 +1,12 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+All notable changes are documented here. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-### Internal
-- Initialize TypeScript package structure, test tooling, and project documentation.
+## [0.2.0] - 2026-10-31
+
+### Added
+- GPS filtering by reported accuracy, implied speed, and minimum distance.
+- Coordinate-only and metadata-rich observations.
+- Retained/rejected source indices and validation tests.

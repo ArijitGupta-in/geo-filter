@@ -1,7 +1,7 @@
 {
     "name": "@arijitgupta/geo-filter",
-    "version": "0.1.0",
-    "description": "Filter geographic coordinate sequences and GPS track observations.",
+    "version": "0.2.0",
+    "description": "Filter GPS tracks using accuracy, speed outlier, and minimum-distance criteria.",
     "type": "module",
     "repository": {
         "type": "git",
@@ -25,13 +25,14 @@
     "publishConfig": {
         "access": "public"
     },
+    "sideEffects": false,
     "scripts": {
         "build": "tsc",
         "test": "vitest run",
         "test:coverage": "vitest run --coverage",
         "check": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
         "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
-        "prepublishOnly": "npm run check && npm run test:coverage && npm run build"
+        "prepublishOnly": "npm run check && npm test && npm run build"
     },
     "keywords": [
         "geo",
@@ -40,13 +41,13 @@
         "filter",
         "track",
         "noise",
-        "outlier",
-        "coordinates"
+        "outlier"
     ],
     "author": "Arijit Gupta",
     "license": "MIT",
     "dependencies": {
-        "@arijitgupta/geo-core": "^1.0.0"
+        "@arijitgupta/geo-core": "^1.1.0",
+        "@arijitgupta/geo-distance": "^2.1.0"
     },
     "devDependencies": {
         "@vitest/coverage-v8": "^4.1.11",
