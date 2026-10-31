@@ -1,0 +1,57 @@
+{
+    "name": "@arijitgupta/geo-filter",
+    "version": "0.1.0",
+    "description": "Filter geographic coordinate sequences and GPS track observations.",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ArijitGupta-in/geo-filter.git"
+    },
+    "homepage": "https://github.com/ArijitGupta-in/geo-filter",
+    "bugs": {
+        "url": "https://github.com/ArijitGupta-in/geo-filter/issues"
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsc",
+        "test": "vitest run",
+        "test:coverage": "vitest run --coverage",
+        "check": "tsc --noEmit && tsc --noEmit -p tsconfig.test.json",
+        "lint:md": "markdownlint-cli2 \"**/*.md\" \"#node_modules\"",
+        "prepublishOnly": "npm run check && npm run test:coverage && npm run build"
+    },
+    "keywords": [
+        "geo",
+        "geospatial",
+        "gps",
+        "filter",
+        "track",
+        "noise",
+        "outlier",
+        "coordinates"
+    ],
+    "author": "Arijit Gupta",
+    "license": "MIT",
+    "dependencies": {
+        "@arijitgupta/geo-core": "^1.0.0"
+    },
+    "devDependencies": {
+        "@vitest/coverage-v8": "^4.1.11",
+        "markdownlint-cli2": "^0.23.2",
+        "typescript": "^7.0.2",
+        "vitest": "^4.1.11"
+    }
+}
